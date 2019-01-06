@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System.Collections.Generic;
+using Microsoft.AspNetCore.Mvc;
+using WebStore.DomainNew.Dto.Order;
 using WebStore.DomainNew.Models.Cart;
 using WebStore.DomainNew.Models.Order;
 using WebStore.Interfaces;
@@ -55,10 +57,26 @@ namespace WebStore.Controllers
         {
             if (ModelState.IsValid)
             {
-                var orderResult = _ordersService.CreateOrder(model, _cartService.TransformCart(), User.Identity.Name);
+                var orderModel = new CreateOrderModel()
+                {
+                    OrderViewModel = model,
+                    OrderItems = new List<OrderItemDto>()
+                };
+                foreach (var orderItem in _cartService.TransformCart().Items)
+                {
+                    orderModel.OrderItems.Add(new OrderItemDto()
+                    {
+                        Id = orderItem.Key.Id,
+                        Price = orderItem.Key.Price,
+                        Quantity = orderItem.Value
+                    });
+                }
+
+                var orderResult = _ordersService.CreateOrder(orderModel, User.Identity.Name);
                 _cartService.RemoveAll();
                 return RedirectToAction("OrderConfirmed", new { id = orderResult.Id });
             }
+
             var detailsModel = new DetailsViewModel()
             {
                 CartViewModel = _cartService.TransformCart(),

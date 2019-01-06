@@ -9,6 +9,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using WebStore.Clients.Services.Orders;
+using WebStore.Clients.Services.Products;
 using WebStore.DAL.Context;
 using WebStore.Infrastructure.Implementations;
 using WebStore.Infrastructure.Implementations.Sql;
@@ -34,8 +36,8 @@ namespace WebStore.ServicesHosting
                     Configuration.GetConnectionString("DefaultConnetion")));
 
             services.AddSingleton<IEmployeesData, InMemoryEmployeesData>();
-            services.AddTransient<IProductData, SqlProductData>();
-            services.AddTransient<IOrdersService, SqlOrdersService>();
+            services.AddTransient<IProductData, ProductsClient>();
+            services.AddTransient<IOrdersService, OrdersClient>();
 
         }
 
