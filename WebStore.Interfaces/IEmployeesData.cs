@@ -14,6 +14,15 @@ namespace WebStore.Interfaces
         /// <returns></returns>
         IEnumerable<EmployeeView> GetAll();
 
+
+        /// <summary>
+        /// Обновление сотрудника
+        /// </summary>
+        /// <param name="id">Id сотрудника</param>
+        /// <param name="entity">Сотрудник для обновления</param>
+        /// <returns></returns>
+        EmployeeView UppdateEmployee(int id, EmployeeView entity);
+
         /// <summary>
         /// Получение сотрудника по id
         /// </summary>

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using WebStore.DomainNew.Models;
 using WebStore.Interfaces;
@@ -23,6 +24,22 @@ namespace WebStore.Infrastructure.Implementations
             return _employees;
         }
 
+        public EmployeeView UppdateEmployee(int id, EmployeeView entity)
+        {
+            if (entity==null)
+                throw  new ArgumentNullException(nameof(entity));
+            var employee = _employees.FirstOrDefault(e => e.Id.Equals(id));
+            if (employee== null)
+                throw new ArgumentNullException(nameof(entity));
+
+            employee.Age = entity.Age;
+            employee.FirstName = entity.FirstName;
+            employee.Patronymic  = entity.Patronymic;
+            employee.SurName  = entity.SurName;
+            employee.Position  = entity.Position;
+            return employee;
+        }
+
         public EmployeeView GetById(int id)
         {
             return _employees.FirstOrDefault(e => e.Id.Equals(id));
@@ -30,8 +47,9 @@ namespace WebStore.Infrastructure.Implementations
 
         public void Commit()
         {
-            //ничего не делаем
+            throw new System.NotImplementedException();
         }
+
 
         public void AddNew(EmployeeView model)
         {
