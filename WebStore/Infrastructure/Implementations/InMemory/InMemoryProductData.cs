@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using WebStore.DomainNew.Dto;
 using WebStore.DomainNew.Entities;
 using WebStore.DomainNew.Filters;
 using WebStore.Interfaces;
@@ -418,6 +419,26 @@ namespace WebStore.Infrastructure.Implementations
         }
 
         public Product GetProductById(int id)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        IEnumerable<SectionDto> IProductData.GetSections()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        IEnumerable<BrandDto> IProductData.GetBrands()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        IEnumerable<ProductDto> IProductData.GetProducts(ProductFilter filter)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        ProductDto IProductData.GetProductById(int id)
         {
             throw new System.NotImplementedException();
         }

@@ -12,7 +12,6 @@ using WebStore.DomainNew.Entities;
 using WebStore.Infrastructure.Implementations;
 using WebStore.Infrastructure.Implementations.Sql;
 using WebStore.Interfaces;
-using WebStore.Interfaces.Api;
 
 namespace WebStore
 {
@@ -40,7 +39,7 @@ namespace WebStore
             services.AddMvc();
 
             //Добавляем разрешение зависимостей
-            services.AddSingleton<IEmployeesData, EmployeesClient>();
+            services.AddTransient<IEmployeesData, EmployeesClient>();
             services.AddScoped<IProductData, SqlProductData>();
             services.AddScoped<IOrdersService, SqlOrdersService>();
 
