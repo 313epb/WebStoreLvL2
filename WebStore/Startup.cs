@@ -6,7 +6,6 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using WebStore.Clients.Services.Values;
 using WebStore.DAL.Context;
 using WebStore.DomainNew.Entities;
 using WebStore.Infrastructure.Implementations;
@@ -83,7 +82,6 @@ namespace WebStore
             services.AddScoped<ICartService, CookieCartService>();
 
             // Добавляем реализацию клиента
-            services.AddTransient<IValuesService, ValuesClient>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

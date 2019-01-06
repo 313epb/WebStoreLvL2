@@ -7,17 +7,14 @@ namespace WebStore.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly IValuesService _valuesService;
 
-        public HomeController(IValuesService valuesService)
+        public HomeController()
         {
-            _valuesService = valuesService;
         }
 
         public async Task<IActionResult> Index()
         {
-            var values = await _valuesService.GetAsync();
-            return View(values);
+            return View();
         }
 
         public IActionResult ContactUs()
