@@ -14,7 +14,7 @@ namespace WebStore.ServicesHosting.Controllers
 {
     [Produces("application/json")]
     [Route("api/orders")]
-    public class OrdersApiController : Controller,IOrdersService
+    public class OrdersApiController : Controller, IOrdersService
     {
         private readonly IOrdersService _ordersService;
 
@@ -23,13 +23,13 @@ namespace WebStore.ServicesHosting.Controllers
             _ordersService = ordersService;
         }
 
-        [HttpGet("{userName}")]
+        [HttpGet("user/{userName}")]
         public IEnumerable<OrderDto> GetUserOrders(string userName)
         {
             return _ordersService.GetUserOrders(userName);
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("{id}"), ActionName("Get")]
         public OrderDto GetOrderById(int id)
         {
             return _ordersService.GetOrderById(id);

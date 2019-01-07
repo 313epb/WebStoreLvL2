@@ -3,15 +3,11 @@ using System.Net.Http;
 using Microsoft.Extensions.Configuration;
 using WebStore.Clients.Base;
 using WebStore.DomainNew.Dto.Order;
-using WebStore.DomainNew.Entities;
-using WebStore.DomainNew.Entities.Base.Interfaces;
-using WebStore.DomainNew.Models.Cart;
-using WebStore.DomainNew.Models.Order;
 using WebStore.Interfaces;
 
 namespace WebStore.Clients.Services.Orders
 {
-    public class OrdersClient:BaseClient,IOrdersService
+    public class OrdersClient : BaseClient, IOrdersService
     {
         public OrdersClient(IConfiguration configuration) : base(configuration)
         {
@@ -31,7 +27,7 @@ namespace WebStore.Clients.Services.Orders
         {
             var url = $"{ServiceAddress}/{id}";
             var result = Get<OrderDto>(url);
-            return result; ;
+            return result;
         }
 
         public OrderDto CreateOrder(CreateOrderModel orderModel, string userName)
