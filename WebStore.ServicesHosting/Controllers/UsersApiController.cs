@@ -27,14 +27,16 @@ namespace WebStore.ServicesHosting.Controllers
     {
         private readonly UserStore<User> _userStore;
 
-        #region IUSerStore
-
         public UsersApiController(WebStoreContext context)
         {
             _userStore = new UserStore<User>(context) { AutoSaveChanges = true };
 
         }
 
+        #region IUSerStore
+
+        //POST api/users/userId
+        [HttpPost("userId")]
         public Task<string> GetUserIdAsync(User user, CancellationToken cancellationToken)
         {
             throw new NotImplementedException();
