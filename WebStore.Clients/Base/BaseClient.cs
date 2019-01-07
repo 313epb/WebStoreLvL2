@@ -27,6 +27,7 @@ namespace WebStore.Clients.Base
         /// <param name="configuration">Конфигурация проекта</param>
         protected BaseClient(IConfiguration configuration)
         {
+            string test = configuration["ClientAdress"];
             // Создаем экземпляр клиента
             Client = new HttpClient
             {

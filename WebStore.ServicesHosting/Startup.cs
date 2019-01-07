@@ -36,8 +36,8 @@ namespace WebStore.ServicesHosting
                     Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddSingleton<IEmployeesData, InMemoryEmployeesData>();
-            services.AddTransient<IProductData, ProductsClient>();
-            services.AddTransient<IOrdersService, OrdersClient>();
+            services.AddTransient<IProductData, SqlProductData>();
+            services.AddTransient<IOrdersService, SqlOrdersService>();
 
         }
 

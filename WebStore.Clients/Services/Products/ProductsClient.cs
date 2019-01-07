@@ -3,12 +3,13 @@ using System.Net.Http;
 using Microsoft.Extensions.Configuration;
 using WebStore.Clients.Base;
 using WebStore.DomainNew.Dto;
+using WebStore.DomainNew.Entities;
 using WebStore.DomainNew.Filters;
 using WebStore.Interfaces;
 
 namespace WebStore.Clients.Services.Products
 {
-    public class ProductsClient :BaseClient,IProductData
+    public class ProductsClient : BaseClient, IProductData
     {
         public ProductsClient(IConfiguration configuration) : base(configuration)
         {
@@ -25,14 +26,14 @@ namespace WebStore.Clients.Services.Products
 
         public IEnumerable<BrandDto> GetBrands()
         {
-            var url = $"{ServiceAddress}/sections";
+            var url = $"{ServiceAddress}/brands";
             var result = Get<List<BrandDto>>(url);
             return result;
         }
 
         public IEnumerable<ProductDto> GetProducts(ProductFilter filter)
         {
-            var url = $"{ServiceAddress}/sections";
+            var url = $"{ServiceAddress}";
             var response = Post(url, filter);
             var result = response.Content.ReadAsAsync<IEnumerable<ProductDto>>().Result;
             return result;
