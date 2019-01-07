@@ -15,10 +15,12 @@ namespace WebStore.Clients.Services.Users
             ServiceAddress = "api/roles";
         }
         protected sealed override string ServiceAddress { get; set; }
+
         public void Dispose()
         {
             Client.Dispose();
         }
+
         public async Task<IdentityResult> CreateAsync(IdentityRole role,
         CancellationToken cancellationToken)
         {
@@ -27,6 +29,7 @@ namespace WebStore.Clients.Services.Users
             var ret = await result.Content.ReadAsAsync<bool>();
             return ret ? IdentityResult.Success : IdentityResult.Failed();
         }
+
         public async Task<IdentityResult> UpdateAsync(IdentityRole role,
         CancellationToken cancellationToken)
         {
@@ -35,6 +38,7 @@ namespace WebStore.Clients.Services.Users
             var ret = await result.Content.ReadAsAsync<bool>();
             return ret ? IdentityResult.Success : IdentityResult.Failed();
         }
+
         public async Task<IdentityResult> DeleteAsync(IdentityRole role,
         CancellationToken cancellationToken)
         {
@@ -43,6 +47,7 @@ namespace WebStore.Clients.Services.Users
             var ret = await result.Content.ReadAsAsync<bool>();
             return ret ? IdentityResult.Success : IdentityResult.Failed();
         }
+
         public async Task<string> GetRoleIdAsync(IdentityRole role,
         CancellationToken cancellationToken)
         {
@@ -51,6 +56,7 @@ namespace WebStore.Clients.Services.Users
             var ret = await result.Content.ReadAsAsync<string>();
             return ret;
         }
+
         public async Task<string> GetRoleNameAsync(IdentityRole role,
         CancellationToken cancellationToken)
         {
@@ -59,6 +65,7 @@ namespace WebStore.Clients.Services.Users
             var ret = await result.Content.ReadAsAsync<string>();
             return ret;
         }
+
         public Task SetRoleNameAsync(IdentityRole role, string roleName,
         CancellationToken cancellationToken)
         {
@@ -66,6 +73,7 @@ namespace WebStore.Clients.Services.Users
             var url = $"{ServiceAddress}/SetRoleNameAsync/{roleName}";
             return PostAsync(url, role);
         }
+
         public async Task<string> GetNormalizedRoleNameAsync(IdentityRole role,
         CancellationToken cancellationToken)
         {
@@ -74,6 +82,7 @@ namespace WebStore.Clients.Services.Users
             var ret = await result.Content.ReadAsAsync<string>();
             return ret;
         }
+
         public Task SetNormalizedRoleNameAsync(IdentityRole role, string
         normalizedName, CancellationToken cancellationToken)
         {
@@ -82,6 +91,7 @@ namespace WebStore.Clients.Services.Users
             $"{ServiceAddress}/SetNormalizedRoleName/{normalizedName}";
             return PostAsync(url, role);
         }
+
         public async Task<IdentityRole> FindByIdAsync(string roleId,
         CancellationToken cancellationToken)
         {
