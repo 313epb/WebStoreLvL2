@@ -45,9 +45,7 @@ namespace WebStore
             services.AddScoped<IProductData, SqlProductData>();
             services.AddScoped<IOrdersService, SqlOrdersService>();
             services.AddTransient<IUsersClient, UsersClient>();
-            // Настройка Identity
-            services.AddIdentity<User, IdentityRole>()
-                .AddDefaultTokenProviders();
+            
             services.AddTransient<IUserStore<User>, UsersClient>();
             services.AddTransient<IUserRoleStore<User>, UsersClient>();
             services.AddTransient<IUserClaimStore<User>, UsersClient>();
