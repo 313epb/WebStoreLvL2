@@ -7,11 +7,13 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using WebStore.Clients.Services.Employees;
+using WebStore.Clients.Services.Users;
 using WebStore.DAL.Context;
 using WebStore.DomainNew.Entities;
 using WebStore.Infrastructure.Implementations;
 using WebStore.Infrastructure.Implementations.Sql;
 using WebStore.Interfaces;
+using WebStore.Interfaces.Api;
 
 namespace WebStore
 {
@@ -42,6 +44,22 @@ namespace WebStore
             services.AddTransient<IEmployeesData, EmployeesClient>();
             services.AddScoped<IProductData, SqlProductData>();
             services.AddScoped<IOrdersService, SqlOrdersService>();
+            services.AddTransient<IUsersClient, UsersClient>();
+            // Настройка Identity
+            services.AddIdentity<User, IdentityRole>()
+                .AddDefaultTokenProviders();
+            services.AddTransient<IUserStore<User>, UsersClient>();
+            services.AddTransient<IUserRoleStore<User>, UsersClient>();
+            services.AddTransient<IUserClaimStore<User>, UsersClient>();
+            services.AddTransient<IUserPasswordStore<User>, UsersClient>();
+            services.AddTransient<IUserTwoFactorStore<User>, UsersClient>();
+            services.AddTransient<IUserEmailStore<User>, UsersClient>();
+            services.AddTransient<IUserPhoneNumberStore<User>,UsersClient>();
+            services.AddTransient<IUserLoginStore<User>, UsersClient>();
+            services.AddTransient<IUserLockoutStore<User>, UsersClient>();
+            services.AddTransient<IRoleStore<IdentityRole>, RolesClient>();
+
+
 
             //Добавляем EF Core
             services.AddDbContext<WebStoreContext>(options => options.UseSqlServer(
