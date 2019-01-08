@@ -15,6 +15,7 @@ using WebStore.Interfaces;
 using WebStore.Interfaces.Api;
 using WebStore.Logger;
 using WebStore.Services;
+using WebStore.Services.MIddleware;
 
 namespace WebStore
 {
@@ -97,9 +98,9 @@ namespace WebStore
             loggerFactory.AddLog4Net();
 
             if (env.IsDevelopment())
-            {
                 app.UseDeveloperExceptionPage();
-            }
+            else
+                app.UseExceptionHandler("/Home/Error");
 
             //Добавляем расширение для использования статических файлов, т.к. appsettings.json - это статический файл
             app.UseStaticFiles();
@@ -107,6 +108,10 @@ namespace WebStore
             app.UseWelcomePage("/welcome");
 
             app.UseAuthentication();
+
+            app.UseStatusCodePagesWithRedirects("~/home/errorstatus/{0}");
+
+            app.UseMiddleware(typeof(ErrorHandlingMiddleware));
 
             //Добавляем обработку запросов в mvc-формате
             app.UseMvc(routes =>

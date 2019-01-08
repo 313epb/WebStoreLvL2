@@ -8,6 +8,7 @@ using WebStore.DAL.Context;
 using WebStore.Interfaces;
 using WebStore.Logger;
 using WebStore.Services.InMemory;
+using WebStore.Services.MIddleware;
 using WebStore.Services.Sql;
 
 namespace WebStore.ServicesHosting
@@ -44,6 +45,8 @@ namespace WebStore.ServicesHosting
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseMiddleware(typeof(ErrorHandlingMiddleware)); 
 
             app.UseMvc();
         }
