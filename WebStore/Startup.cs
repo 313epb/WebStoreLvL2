@@ -3,19 +3,18 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using WebStore.Clients.Services.Employees;
 using WebStore.Clients.Services.Orders;
 using WebStore.Clients.Services.Products;
 using WebStore.Clients.Services.Users;
-using WebStore.DAL.Context;
 using WebStore.DomainNew.Entities;
 using WebStore.Infrastructure.Implementations;
-using WebStore.Infrastructure.Implementations.Sql;
 using WebStore.Interfaces;
 using WebStore.Interfaces.Api;
+using WebStore.Logger;
 
 namespace WebStore
 {
@@ -93,8 +92,10 @@ namespace WebStore
             services.AddScoped<ICartService, CookieCartService>();
         }
 
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, IServiceProvider svp)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, IServiceProvider svp, ILoggerFactory loggerFactory)
         {
+            loggerFactory.AddLog4Net();
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

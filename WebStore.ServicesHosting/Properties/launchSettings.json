@@ -15,15 +15,16 @@
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
-    },
-    "WebStore.ServicesHosting": {
-      "commandName": "Project",
-      "launchBrowser": true,
-      "launchUrl": "api/values",
-      "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
-      },
-      "applicationUrl": "http://localhost:2152/"
     }
+  },
+  "WebStore.ServicesHosting": {
+    "commandName": "Project",
+    "launchBrowser": true,
+    "launchUrl": "api/values",
+    "environmentVariables": {
+      "ASPNETCORE_ENVIRONMENT": "Development"
+    },
+    "applicationUrl": "http://localhost:2152/"
   }
 }
+

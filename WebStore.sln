@@ -14,15 +14,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{DC
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Ui", "Ui", "{4A016965-D424-4D68-A2A5-17136F40110D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebStore.ServicesHosting", "WebStore.ServicesHosting\WebStore.ServicesHosting.csproj", "{FA55CB5C-8182-45FD-965D-452DF32AC518}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebStore.ServicesHosting", "WebStore.ServicesHosting\WebStore.ServicesHosting.csproj", "{FA55CB5C-8182-45FD-965D-452DF32AC518}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebStore.Interfaces", "WebStore.Interfaces\WebStore.Interfaces.csproj", "{A932A8B9-B83B-41A7-9CB9-C2BAA413C1DB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebStore.Interfaces", "WebStore.Interfaces\WebStore.Interfaces.csproj", "{A932A8B9-B83B-41A7-9CB9-C2BAA413C1DB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebStore.Services", "WebStore.Services\WebStore.Services.csproj", "{0F2B7E0A-81E0-4A0C-AA56-CEC8E042997F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebStore.Services", "WebStore.Services\WebStore.Services.csproj", "{0F2B7E0A-81E0-4A0C-AA56-CEC8E042997F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Clients", "Clients", "{29217277-56F4-40F3-8F69-735462F55118}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebStore.Clients", "WebStore.Clients\WebStore.Clients.csproj", "{23262877-4E1E-45FA-A024-AE1E205C36AB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebStore.Clients", "WebStore.Clients\WebStore.Clients.csproj", "{23262877-4E1E-45FA-A024-AE1E205C36AB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebStore.Logger", "WebStore.Logger\WebStore.Logger.csproj", "{B951CCD3-0FAA-4D12-BF09-222EDFEA0D19}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -118,6 +120,18 @@ Global
 		{23262877-4E1E-45FA-A024-AE1E205C36AB}.Release|x64.Build.0 = Release|Any CPU
 		{23262877-4E1E-45FA-A024-AE1E205C36AB}.Release|x86.ActiveCfg = Release|Any CPU
 		{23262877-4E1E-45FA-A024-AE1E205C36AB}.Release|x86.Build.0 = Release|Any CPU
+		{B951CCD3-0FAA-4D12-BF09-222EDFEA0D19}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B951CCD3-0FAA-4D12-BF09-222EDFEA0D19}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B951CCD3-0FAA-4D12-BF09-222EDFEA0D19}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{B951CCD3-0FAA-4D12-BF09-222EDFEA0D19}.Debug|x64.Build.0 = Debug|Any CPU
+		{B951CCD3-0FAA-4D12-BF09-222EDFEA0D19}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{B951CCD3-0FAA-4D12-BF09-222EDFEA0D19}.Debug|x86.Build.0 = Debug|Any CPU
+		{B951CCD3-0FAA-4D12-BF09-222EDFEA0D19}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B951CCD3-0FAA-4D12-BF09-222EDFEA0D19}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B951CCD3-0FAA-4D12-BF09-222EDFEA0D19}.Release|x64.ActiveCfg = Release|Any CPU
+		{B951CCD3-0FAA-4D12-BF09-222EDFEA0D19}.Release|x64.Build.0 = Release|Any CPU
+		{B951CCD3-0FAA-4D12-BF09-222EDFEA0D19}.Release|x86.ActiveCfg = Release|Any CPU
+		{B951CCD3-0FAA-4D12-BF09-222EDFEA0D19}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -130,6 +144,7 @@ Global
 		{A932A8B9-B83B-41A7-9CB9-C2BAA413C1DB} = {EE5E90E7-5A71-440F-9198-0462A845B946}
 		{0F2B7E0A-81E0-4A0C-AA56-CEC8E042997F} = {DC5F022F-BBDF-46A7-977E-C90CB05DF8AB}
 		{23262877-4E1E-45FA-A024-AE1E205C36AB} = {29217277-56F4-40F3-8F69-735462F55118}
+		{B951CCD3-0FAA-4D12-BF09-222EDFEA0D19} = {EE5E90E7-5A71-440F-9198-0462A845B946}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {30B2AB15-50DB-4EE3-88A9-114E96967802}
