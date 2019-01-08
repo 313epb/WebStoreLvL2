@@ -8,7 +8,7 @@ namespace WebStore
 {
     public class Program
     {
-        private static readonly log4net.ILog log =
+        private static readonly log4net.ILog Log =
             log4net.LogManager.GetLogger(typeof(Program));
 
         public static void Main(string[] args)
@@ -21,6 +21,8 @@ namespace WebStore
                 typeof(log4net.Repository.Hierarchy.Hierarchy));
 
             log4net.Config.XmlConfigurator.Configure(repo, log4netConfig["log4net"]);
+
+            Log.Error("Application-Main is invoked.");
 
             BuildWebHost(args).Run();
         }
