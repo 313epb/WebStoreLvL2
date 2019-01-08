@@ -3,10 +3,12 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using WebStore.DAL.Context;
 using WebStore.Infrastructure.Implementations;
 using WebStore.Infrastructure.Implementations.Sql;
 using WebStore.Interfaces;
+using WebStore.Logger;
 
 namespace WebStore.ServicesHosting
 {
@@ -34,8 +36,10 @@ namespace WebStore.ServicesHosting
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
+            loggerFactory.AddLog4Net();
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
