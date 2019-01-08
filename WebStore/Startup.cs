@@ -11,10 +11,10 @@ using WebStore.Clients.Services.Orders;
 using WebStore.Clients.Services.Products;
 using WebStore.Clients.Services.Users;
 using WebStore.DomainNew.Entities;
-using WebStore.Infrastructure.Implementations;
 using WebStore.Interfaces;
 using WebStore.Interfaces.Api;
 using WebStore.Logger;
+using WebStore.Services;
 
 namespace WebStore
 {

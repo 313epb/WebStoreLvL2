@@ -5,10 +5,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using WebStore.DAL.Context;
-using WebStore.Infrastructure.Implementations;
-using WebStore.Infrastructure.Implementations.Sql;
 using WebStore.Interfaces;
 using WebStore.Logger;
+using WebStore.Services.InMemory;
+using WebStore.Services.Sql;
 
 namespace WebStore.ServicesHosting
 {

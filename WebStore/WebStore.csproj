@@ -15,6 +15,7 @@
   <ItemGroup>
     <Folder Include="Areas\Admin\Data\" />
     <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Infrastructure\" />
     <Folder Include="wwwroot\js\" />
     <Folder Include="wwwroot\admin\" />
   </ItemGroup>
@@ -31,5 +32,6 @@
     <ProjectReference Include="..\WebStore.DomainNew\WebStore.DomainNew.csproj" />
     <ProjectReference Include="..\WebStore.Interfaces\WebStore.Interfaces.csproj" />
     <ProjectReference Include="..\WebStore.Logger\WebStore.Logger.csproj" />
+    <ProjectReference Include="..\WebStore.Services\WebStore.Services.csproj" />
   </ItemGroup>
 </Project>

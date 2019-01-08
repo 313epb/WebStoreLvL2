@@ -1,17 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Transactions;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using WebStore.DAL.Context;
 using WebStore.DomainNew.Dto.Order;
 using WebStore.DomainNew.Entities;
-using WebStore.DomainNew.Models.Cart;
-using WebStore.DomainNew.Models.Order;
 using WebStore.Interfaces;
 
-namespace WebStore.Infrastructure.Implementations.Sql
+namespace WebStore.Services.Sql
 {
     public class SqlOrdersService : IOrdersService
     {

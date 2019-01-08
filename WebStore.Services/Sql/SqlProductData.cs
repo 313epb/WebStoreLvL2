@@ -3,11 +3,10 @@ using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using WebStore.DAL.Context;
 using WebStore.DomainNew.Dto;
-using WebStore.DomainNew.Entities;
 using WebStore.DomainNew.Filters;
 using WebStore.Interfaces;
 
-namespace WebStore.Infrastructure.Implementations.Sql
+namespace WebStore.Services.Sql
 {
     public class SqlProductData : IProductData
     {

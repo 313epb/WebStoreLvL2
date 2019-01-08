@@ -8,7 +8,7 @@ using WebStore.DomainNew.Models.Cart;
 using WebStore.DomainNew.Models.Product;
 using WebStore.Interfaces;
 
-namespace WebStore.Infrastructure.Implementations
+namespace WebStore.Services
 {
     public class CookieCartService : ICartService
     {
