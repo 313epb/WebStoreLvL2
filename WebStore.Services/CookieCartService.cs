@@ -52,7 +52,7 @@ namespace WebStore.Services
 
         public void RemoveAll()
         {
-            _cartStore.Cart = new Cart { Items = new List<CartItem>() };
+            _cartStore.Cart.Items.Clear();
         }
 
         public void AddToCart(int id)
