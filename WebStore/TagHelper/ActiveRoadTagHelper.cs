@@ -37,21 +37,53 @@ namespace WebStore.TagHelper
             /// <summary>
             /// Gets or sets the <seecref="T:Microsoft.AspNetCore.Mvc.Rendering.ViewContext" /> for the current request.
             /// </summary>
+            
             [HtmlAttributeNotBound]
             [ViewContext]
             public ViewContext ViewContext { get; set; }
-
-            public override void Process(TagHelperContext context, TagHelperOutput output)
+            public override void Process(TagHelperContext context, TagHelperOutput
+                output)
             {
                 base.Process(context, output);
-                if (ShouldBeActive())
+                bool ignoreAction =
+                    context.AllAttributes.TryGetAttribute("ignore-action", out _);
+                if (ShouldBeActive(ignoreAction))
                 {
                     MakeActive(output);
                 }
                 output.Attributes.RemoveAll("is-active-route");
             }
+            private bool ShouldBeActive(bool ignoreAction)
+            {
+                var currentController =
+                    ViewContext.RouteData.Values["Controller"].ToString();
+                var currentAction =
+                    ViewContext.RouteData.Values["Action"].ToString();
+                if (!string.IsNullOrWhiteSpace(Controller) &&
+                    !string.Equals(Controller, currentController,
+                        StringComparison.CurrentCultureIgnoreCase))
+                {
+                    return false;
+                }
+                if (!ignoreAction && !string.IsNullOrWhiteSpace(Action) &&
+                    !string.Equals(Action, currentAction,
+                        StringComparison.CurrentCultureIgnoreCase))
+                {
+                    return false;
+                }
+                foreach (var routeValue in RouteValues)
+                {
+                    if (!ViewContext.RouteData.Values.ContainsKey(routeValue.Key) ||
+                        ViewContext.RouteData.Values[routeValue.Key].ToString() !=
+                        routeValue.Value)
+                    {
+                        return false;
+                    }
+                }
+                return true;
+            }
 
-            private bool ShouldBeActive()
+        private bool ShouldBeActive()
             {
                 var currentController =
                     ViewContext.RouteData.Values["Controller"].ToString();

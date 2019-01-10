@@ -5,6 +5,15 @@
   font-weight:400px;
 }
 
+.panel-body ul li.active {
+    text-decoration: underline;
+}
+
+.panel-body ul li.active, .brands-name ul li.active {
+    text-decoration: underline;
+}
+
+
 ul li {
   list-style: none;
 }

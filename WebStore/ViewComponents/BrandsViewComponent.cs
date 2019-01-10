@@ -10,18 +10,20 @@ namespace WebStore.ViewComponents
     public class BrandsViewComponent : ViewComponent
     {
         private readonly IProductData _productData;
-
         public BrandsViewComponent(IProductData productData)
         {
             _productData = productData;
         }
-
-        public async Task<IViewComponentResult> InvokeAsync()
+        public async Task<IViewComponentResult> InvokeAsync(string brandId)
         {
+            int.TryParse(brandId, out var brandIdResult);
             var brands = GetBrands();
-            return View(brands);
+            return View(new BrandCompleteViewModel()
+            {
+                Brands = brands,
+                CurrentBrandId = brandIdResult
+            });
         }
-
         private IEnumerable<BrandViewModel> GetBrands()
         {
             var dbBrands = _productData.GetBrands();
@@ -34,4 +36,5 @@ namespace WebStore.ViewComponents
             }).OrderBy(b => b.Order).ToList();
         }
     }
+
 }
