@@ -3,7 +3,6 @@ using System.Net.Http;
 using Microsoft.Extensions.Configuration;
 using WebStore.Clients.Base;
 using WebStore.DomainNew.Dto;
-using WebStore.DomainNew.Entities;
 using WebStore.DomainNew.Filters;
 using WebStore.Interfaces;
 
