@@ -31,8 +31,8 @@ namespace WebStore.Services.Sql
         }
         public SectionDto GetSectionById(int id)
         {
-            Section sec = _context.Sections.FirstOrDefault(s => s.Id.Equals(id)) 
-                          ?? throw new ArgumentNullException("_context.Sections.FirstOrDefault(s => s.Id.Equals(id))");
+            Section sec = _context.Sections.FirstOrDefault(s => s.Id.Equals(id));
+                          if (sec == null) return null;
             
             return new SectionDto
             {
@@ -84,8 +84,9 @@ namespace WebStore.Services.Sql
                 Section = new SectionDto()
                 {
                     Id = p.SectionId,
-                    Name =
-                        p.Section.Name
+                    Name =p.Section.Name,
+                    ParentId =p.Section.ParentId,
+                    Order = p.Section.Order
                 }
             }).ToList();
         }
@@ -106,8 +107,9 @@ namespace WebStore.Services.Sql
                 Section = new SectionDto()
                 {
                     Id = product.SectionId,
-                    Name =
-                        product.Section.Name
+                    Name =product.Section.Name,
+                    ParentId = product.Section.ParentId,
+                    Order = product.Section.Order
                 }
             };
             if (product.Brand != null)
