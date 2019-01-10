@@ -1,8 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using WebStore.DAL.Context;
 using WebStore.DomainNew.Dto;
+using WebStore.DomainNew.Entities;
 using WebStore.DomainNew.Filters;
 using WebStore.Interfaces;
 
@@ -27,6 +29,20 @@ namespace WebStore.Services.Sql
                 Id = s.Id
             });
         }
+        public SectionDto GetSectionById(int id)
+        {
+            Section sec = _context.Sections.FirstOrDefault(s => s.Id.Equals(id)) 
+                          ?? throw new ArgumentNullException("_context.Sections.FirstOrDefault(s => s.Id.Equals(id))");
+            
+            return new SectionDto
+            {
+                Name = sec.Name,
+                Order = sec.Order,
+                Id = sec.Id,
+                ParentId = sec.ParentId
+            };
+        }
+        
 
         public IEnumerable<BrandDto> GetBrands()
         {
@@ -38,32 +54,47 @@ namespace WebStore.Services.Sql
             }));
         }
 
+        public Brand GetBrandById(int id)
+        {
+            return _context.Brands.FirstOrDefault(s => s.Id == id);
+        }
+
         public IEnumerable<ProductDto> GetProducts(ProductFilter filter)
         {
-            var query = _context.Products.Include("Brand").Include("Section").AsQueryable();
+            var query =
+                _context.Products.Include("Brand").Include("Section").AsQueryable();
             if (filter.BrandId.HasValue)
-                query = query.Where(c => c.BrandId.HasValue && c.BrandId.Value.Equals(filter.BrandId.Value));
+                query = query.Where(c => c.BrandId.HasValue &&
+                                         c.BrandId.Value.Equals(filter.BrandId.Value));
             if (filter.SectionId.HasValue)
-                query = query.Where(c => c.SectionId.Equals(filter.SectionId.Value));
-            return query.Select(p=>new ProductDto
+                query = query.Where(c =>
+                    c.SectionId.Equals(filter.SectionId.Value));
+            return query.Select(p => new ProductDto()
             {
                 Id = p.Id,
                 Name = p.Name,
                 Order = p.Order,
                 Price = p.Price,
                 ImageUrl = p.ImageUrl,
-                Brand = p.BrandId.HasValue?new BrandDto
+                Brand = p.BrandId.HasValue ? new BrandDto()
                 {
                     Id = p.Brand.Id,
-                    Order = p.Brand.Order,
                     Name = p.Brand.Name
-                } : null
-            });
+                } : null,
+                Section = new SectionDto()
+                {
+                    Id = p.SectionId,
+                    Name =
+                        p.Section.Name
+                }
+            }).ToList();
         }
 
         public ProductDto GetProductById(int id)
         {
-            var product= _context.Products.Include("Brand").Include("Section").FirstOrDefault(p => p.Id.Equals(id));
+            var product =
+                    _context.Products.Include("Brand").Include("Section").FirstOrDefault(p =>
+                        p.Id.Equals(id));
             if (product == null) return null;
             var dto = new ProductDto()
             {
@@ -71,17 +102,23 @@ namespace WebStore.Services.Sql
                 Name = product.Name,
                 ImageUrl = product.ImageUrl,
                 Order = product.Order,
-                Price = product.Price
+                Price = product.Price,
+                Section = new SectionDto()
+                {
+                    Id = product.SectionId,
+                    Name =
+                        product.Section.Name
+                }
             };
             if (product.Brand != null)
                 dto.Brand = new BrandDto()
                 {
                     Id = product.Brand.Id,
-                    Name = product.Brand.Name,
-                    Order = product.Brand.Order
+                    Name = product.Brand.Name
                 };
             return dto;
         }
+
     }
 }
 

@@ -22,6 +22,19 @@ namespace WebStore.ServicesHosting.Controllers
             _productData = productData;
         }
 
+
+        [HttpGet("sections/{id}")]
+        public SectionDto GetSectionById(int id)
+        {
+            return _productData.GetSectionById(id);
+        }
+        [HttpGet("brands/{id}")]
+        public Brand GetBrandById(int id)
+        {
+            return _productData.GetBrandById(id);
+        }
+
+
         /// <summary>
         /// GET api/products/sections
         /// </summary>

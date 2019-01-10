@@ -3,6 +3,7 @@ using System.Net.Http;
 using Microsoft.Extensions.Configuration;
 using WebStore.Clients.Base;
 using WebStore.DomainNew.Dto;
+using WebStore.DomainNew.Entities;
 using WebStore.DomainNew.Filters;
 using WebStore.Interfaces;
 
@@ -44,5 +45,19 @@ namespace WebStore.Clients.Services.Products
             var result = Get<ProductDto>(url);
             return result;
         }
+
+        public SectionDto GetSectionById(int id)
+        {
+            var url = $"{ServiceAddress}/sections/{id}";
+            var result = Get<SectionDto>(url);
+            return result;
+        }
+        public Brand GetBrandById(int id)
+        {
+            var url = $"{ServiceAddress}/brands/{id}";
+            var result = Get<Brand>(url);
+            return result;
+        }
+
     }
 }

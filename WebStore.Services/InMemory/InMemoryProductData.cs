@@ -403,9 +403,19 @@ namespace WebStore.Services.InMemory
             return _sections;
         }
 
+        public SectionDto GetSectionById(int id)
+        {
+            throw new System.NotImplementedException();
+        }
+
         public IEnumerable<Brand> GetBrands()
         {
             return _brands;
+        }
+
+        public Brand GetBrandById(int id)
+        {
+            throw new System.NotImplementedException();
         }
 
         public IEnumerable<Product> GetProducts(ProductFilter filter)

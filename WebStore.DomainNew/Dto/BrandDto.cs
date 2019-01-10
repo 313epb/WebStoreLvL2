@@ -6,5 +6,6 @@ namespace WebStore.DomainNew.Dto
     public class BrandDto:NamedEntity,IOrderedEntity
     {
         public int Order { get; set; }
+
     }
 }
