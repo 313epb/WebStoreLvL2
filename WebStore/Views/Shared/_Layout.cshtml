@@ -46,6 +46,7 @@
     <script src="~/js/price-range.js"></script>
     <script src="~/js/jquery.prettyPhoto.js"></script>
     <script src="~/js/main.js"></script>
+    <script src="js/Cart/cartLogic.js"></script>
 </environment>
     <environment exclude="Development">
         <script src="~/lib/jquery/dist/jquery.js" asp-append-version="true"></script>
@@ -54,6 +55,14 @@
         <script src="~/js/site.min.js" asp-append-version="true"></script>
     </environment>
     <!--Секция для отображения кастомных скриптов, если понадобятся-->
+    <script type="text/javascript">
+        $(function() {
+            Cart.init({
+                addToCartLink: '@Url.Action("AddToCart","Cart")',
+                getCartViewLink : '@Url.Action("GetCartView", "Cart")'
+            });
+        });
+    </script>
     @RenderSection("scripts", false)
 </body>
 </html>
