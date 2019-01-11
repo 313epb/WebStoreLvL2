@@ -36,18 +36,36 @@ namespace WebStore.Interfaces
         /// <returns></returns>
         Brand GetBrandById(int id);
 
+        #region Реализация до постраничной
+
         /// <summary>
         /// Список товаров
         /// </summary>
         /// <param name="filter">Фильтр товаров</param>
         /// <returns></returns>
-        IEnumerable<ProductDto> GetProducts(ProductFilter filter);
+        //IEnumerable<ProductDto> GetProducts(ProductFilter filter);
 
         /// <summary>
         /// Продукт
         /// </summary>
         /// <param name="id">Идентификатор</param>
         /// <returns>Сущность Product, если нашёл, иначе null</returns>
+        //ProductDto GetProductById(int id);
+
+        #endregion
+
+        /// <summary>
+        /// Список товаров с постраничным разбиением
+        /// </summary>
+        /// <param name="filter">Фильтр товаров</param>
+        /// <returns></returns>
+        PagedProductDto GetProducts(ProductFilter filter);
+        /// <summary>
+        /// Продукт
+        /// </summary>
+        /// <param name="id">Идентификатор</param>
+        /// <returns>Сущность Product, если
         ProductDto GetProductById(int id);
+
     }
 }

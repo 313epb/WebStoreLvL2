@@ -1,11 +1,8 @@
-﻿@using WebStore.DomainNew.Models.Product
-@model WebStore.DomainNew.Models.Product.CatalogViewModel
+﻿@model WebStore.DomainNew.Models.Product.CatalogViewModel
 @{
+    Layout = "_LayoutBreadcrumbs";
     ViewData["Title"] = "Shop";
 }
-
-@await Html.PartialAsync("Partial/_Advertisement")
-
 <section>
     <div class="row">
         <div class="col-sm-3">
@@ -13,12 +10,9 @@
         </div>
         <div class="col-sm-9 padding-right">
             @await Html.PartialAsync("Partial/_ProductItems", Model.Products)
-            <ul class="pagination">
-                <li class="active"><a href="">1</a></li>
-                <li><a href="">2</a></li>
-                <li><a href="">3</a></li>
-                <li><a href="">&raquo;</a></li>
-            </ul>
+            <paging page-model="Model.PageViewModel" page-action="Shop"
+                    page-url-sectionId="@Model.SectionId"
+                    page-url-brandId="@Model.BrandId"></paging>
         </div>
     </div>
 </section>
