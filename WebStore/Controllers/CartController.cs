@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.VisualStudio.Web.CodeGeneration.Contracts.Messaging;
 using WebStore.DomainNew.Dto.Order;
 using WebStore.DomainNew.Models.Cart;
 using WebStore.DomainNew.Models.Order;
@@ -46,10 +47,15 @@ namespace WebStore.Controllers
             return RedirectToAction("Details");
         }
 
-        public IActionResult AddToCart(int id, string returnUrl)
+        public IActionResult AddToCart(int id)
         {
             _cartService.AddToCart(id);
-            return Redirect(returnUrl);
+            return Json(new {id, message = "Товар добавлен в корзину"});
+        }
+
+        public IActionResult GetCartView()
+        {
+            return ViewComponent("Cart");
         }
 
         [HttpPost, ValidateAntiForgeryToken]
