@@ -32,13 +32,13 @@ namespace WebStore.Controllers
         public IActionResult DecrementFromCart(int id)
         {
             _cartService.DecrementFromCart(id);
-            return RedirectToAction("Details");
+            return Json(new {id, message = "Количество товара уменьшено на 1"});
         }
 
         public IActionResult RemoveFromCart(int id)
         {
             _cartService.RemoveFromCart(id);
-            return RedirectToAction("Details");
+            return Json(new {id, message = "Товар удалён."});
         }
 
         public IActionResult RemoveAll()
