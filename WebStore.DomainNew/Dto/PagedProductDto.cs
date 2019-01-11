@@ -12,5 +12,7 @@ namespace WebStore.DomainNew.Dto
             /// Общее количество в запросе
             /// </summary>
             public int TotalCount { get; set; }
+
+
     }
 }

@@ -418,15 +418,20 @@ namespace WebStore.Services.InMemory
             throw new System.NotImplementedException();
         }
 
-        public IEnumerable<Product> GetProducts(ProductFilter filter)
+        public PagedProductDto GetProducts(ProductFilter filter)
         {
-            var products = _products;
-            if (filter.SectionId.HasValue)
-                products = products.Where(p => p.SectionId.Equals(filter.SectionId)).ToList();
-            if(filter.BrandId.HasValue)
-                products = products.Where(p => p.BrandId.HasValue && p.BrandId.Value.Equals(filter.BrandId.Value)).ToList();
-            return products;
+            throw new System.NotImplementedException();
         }
+
+        //public IEnumerable<ProductDto> GetProducts(ProductFilter filter)
+        //{
+        //    var products = _products;
+        //    if (filter.SectionId.HasValue)
+        //        products = products.Where(p => p.SectionId.Equals(filter.SectionId)).ToList();
+        //    if(filter.BrandId.HasValue)
+        //        products = products.Where(p => p.BrandId.HasValue && p.BrandId.Value.Equals(filter.BrandId.Value)).ToList();
+        //    return products;
+        //}
 
         public Product GetProductById(int id)
         {
@@ -443,10 +448,7 @@ namespace WebStore.Services.InMemory
             throw new System.NotImplementedException();
         }
 
-        IEnumerable<ProductDto> IProductData.GetProducts(ProductFilter filter)
-        {
-            throw new System.NotImplementedException();
-        }
+        
 
         ProductDto IProductData.GetProductById(int id)
         {

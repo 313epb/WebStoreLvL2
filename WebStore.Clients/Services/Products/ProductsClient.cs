@@ -31,13 +31,14 @@ namespace WebStore.Clients.Services.Products
             return result;
         }
 
-        public IEnumerable<ProductDto> GetProducts(ProductFilter filter)
-        {
-            var url = $"{ServiceAddress}";
-            var response = Post(url, filter);
-            var result = response.Content.ReadAsAsync<IEnumerable<ProductDto>>().Result;
-            return result;
-        }
+        //реализация до постраничной разбивки
+        //public IEnumerable<ProductDto> GetProducts(ProductFilter filter)
+        //{
+        //    var url = $"{ServiceAddress}";
+        //    var response = Post(url, filter);
+        //    var result = response.Content.ReadAsAsync<IEnumerable<ProductDto>>().Result;
+        //    return result;
+        //}
 
         public ProductDto GetProductById(int id)
         {
@@ -59,5 +60,12 @@ namespace WebStore.Clients.Services.Products
             return result;
         }
 
+        PagedProductDto IProductData.GetProducts(ProductFilter filter)
+        {
+            var url = $"{ServiceAddress}";
+            var response = Post(url, filter);
+            var result = response.Content.ReadAsAsync<PagedProductDto>().Result;
+            return result;
+        }
     }
 }
